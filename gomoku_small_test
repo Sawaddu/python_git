@@ -1,0 +1,973 @@
+import random
+
+# 1st function for game menu ==================
+"""def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")"""
+
+
+# 2nd function for creating board size ==================
+"""def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for i in range(size)] for j in range(size)]
+    
+def choose():
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        while choice not in ["1", "2", "3", "4", "5"]:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+            choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("\n=================== Starting the game ====================")
+
+        elif choice == "2":
+            print("\n=================== Printing the board ====================")
+            size = int(input("Enter Gomoku Board Game Size 9, 13, 15: "))
+            board = create_board(size)
+            print_board(board)
+
+        elif choice == "3":
+            print("\n=================== Placing a Stone ====================")
+
+        elif choice == "4":
+            print("\n===================  Resetting the Game ====================")
+
+        elif choice == "5":
+            print("\n===================  Exiting the game ====================")
+            break
+
+
+choose()"""
+
+# 3rd function for is occupied board ==================
+"""def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for _ in range(size)] for _ in range(size)]
+
+def is_occupied(board, x, y):
+    if board[x][y] != "-":
+        return True
+    return False
+
+def choose():
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        while choice not in ["1", "2", "3", "4", "5"]:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+            choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("\n=================== Starting the game ====================")
+
+        elif choice == "2":
+            print("\n=================== Printing the board ====================")
+            size = int(input("Enter Gomoku Board Game Size 9, 13, 15: "))
+            board = create_board(size)
+            print_board(board)
+
+        elif choice == "3":
+            print("\n=================== Placing a Stone ====================")
+
+        elif choice == "4":
+            print("\n===================  Resetting the Game ====================")
+
+        elif choice == "5":
+            print("\n===================  Exiting the game ====================")
+            break
+
+
+choose()
+
+    """
+
+# 4th function for placing stone on board ==================
+"""
+def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for _ in range(size)] for _ in range(size)]
+
+
+def is_occupied(board, x, y):
+    if board[x][y] != "-":
+        return True
+    return False
+
+
+def place_on_board(board, stone, position):
+    x, y = position
+
+    # Check if x is an integer and y is a string containing an alphabetical character
+    if isinstance(x, int) and isinstance(y, str) and y.isalpha():
+        x = int(x)  # Convert x to an integer
+        y = ord(y.upper()) - ord("A")  # Convert y to the corresponding column index
+
+        # Check if the position is within the valid board dimensions and not occupied
+        if (
+            0 <= x < len(board)
+            and 0 <= y < len(board[0])
+            and not is_occupied(board, x, y)
+        ):
+            board[x][y] = stone  # Place the stone on the board
+            return True  # Indicate successful placement
+
+    return False  # Indicate failed placement
+    
+def choose():
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        while choice not in ["1", "2", "3", "4", "5"]:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+            choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("\n=================== Starting the game ====================")
+
+        elif choice == "2":
+            print("\n=================== Printing the board ====================")
+            size = int(input("Enter Gomoku Board Game Size 9, 13, 15: "))
+            board = create_board(size)
+            print_board(board)
+
+        elif choice == "3":
+            print("\n=================== Placing a Stone ====================")
+
+        elif choice == "4":
+            print("\n===================  Resetting the Game ====================")
+
+        elif choice == "5":
+            print("\n===================  Exiting the game ====================")
+            break
+
+
+choose()
+    """
+
+# 5th function for printing board ==================
+"""def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for _ in range(size)] for _ in range(size)]
+
+
+def is_occupied(board, x, y):
+    if board[x][y] != "-":
+        return True
+    return False
+
+
+def place_on_board(board, stone, position):
+    x, y = position
+
+    # Check if x is an integer and y is a string containing an alphabetical character
+    if isinstance(x, int) and isinstance(y, str) and y.isalpha():
+        x = int(x)  # Convert x to an integer
+        y = ord(y.upper()) - ord("A")  # Convert y to the corresponding column index
+
+        # Check if the position is within the valid board dimensions and not occupied
+        if (
+            0 <= x < len(board)
+            and 0 <= y < len(board[0])
+            and not is_occupied(board, x, y)
+        ):
+            board[x][y] = stone  # Place the stone on the board
+            return True  # Indicate successful placement
+
+    return False  # Indicate failed placement
+
+def print_board(board):
+    for i in range(len(board)):
+        print("  " + chr(i + ord("A")), end=" ")
+    print("\n +" + "---+" * len(board))
+    for i, row in enumerate(board):
+        print(" | " + " | ".join(row) + " |" + f"{i}")
+        print(" +" + "---+" * len(board))
+    for i in range(1, len(board) + 1):
+        print(" ", i, end=" ")
+    print("\n")"""
+
+
+"""# 6th function for check available moves ==================
+def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for _ in range(size)] for _ in range(size)]
+
+
+def is_occupied(board, x, y):
+    if board[x][y] != "-":
+        return True
+    return False
+
+
+def place_on_board(board, stone, position):
+    x, y = position
+
+    # Check if x is an integer and y is a string containing an alphabetical character
+    if isinstance(x, int) and isinstance(y, str) and y.isalpha():
+        x = int(x)  # Convert x to an integer
+        y = ord(y.upper()) - ord("A")  # Convert y to the corresponding column index
+
+        # Check if the position is within the valid board dimensions and not occupied
+        if (
+            0 <= x < len(board)
+            and 0 <= y < len(board[0])
+            and not is_occupied(board, x, y)
+        ):
+            board[x][y] = stone  # Place the stone on the board
+            return True  # Indicate successful placement
+
+    return False  # Indicate failed placement
+
+
+def print_board(board):
+    for i in range(len(board)):
+        print("  " + chr(i + ord("A")), end=" ")
+    print("\n +" + "---+" * len(board))
+    for i, row in enumerate(board):
+        print(" | " + " | ".join(row) + " |" + f"{i}")
+        print(" +" + "---+" * len(board))
+    for i in range(1, len(board) + 1):
+        print(" ", i, end=" ")
+    print("\n")
+
+
+def check_available_moves(board):
+    size = len(board)  # Get the size of the board (assuming it's a square board)
+    available_moves = []  # Initialize an empty list to store available moves
+
+    # Loop through each row and column of the board
+    for row in range(size):
+        for col in range(size):
+            # Check if the current cell is not occupied
+            if not is_occupied(board, row, col):
+                # Convert the row and column indices to a user-friendly position format
+                position = (str(row), chr(col + ord("A")))
+                available_moves.append(position)  # Add the position to the list
+
+    return available_moves  # Return the list of available moves
+    
+def choose():
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        while choice not in ["1", "2", "3", "4", "5"]:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+            choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("\n=================== Starting the game ====================")
+
+        elif choice == "2":
+            print("\n=================== Printing the board ====================")
+            size = int(input("Enter Gomoku Board Game Size 9, 13, 15: "))
+            board = create_board(size)
+            print_board(board)
+
+        elif choice == "3":
+            print("\n=================== Placing a Stone ====================")
+
+        elif choice == "4":
+            print("\n===================  Resetting the Game ====================")
+
+        elif choice == "5":
+            print("\n===================  Exiting the game ====================")
+            break
+
+
+choose()"""
+
+
+# 7th function for check winner ==================
+"""def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for _ in range(size)] for _ in range(size)]
+
+
+def is_occupied(board, x, y):
+    if board[x][y] != "-":
+        return True
+    return False
+
+
+def place_on_board(board, stone, position):
+    x, y = position
+
+    # Check if x is an integer and y is a string containing an alphabetical character
+    if isinstance(x, int) and isinstance(y, str) and y.isalpha():
+        x = int(x)  # Convert x to an integer
+        y = ord(y.upper()) - ord("A")  # Convert y to the corresponding column index
+
+        # Check if the position is within the valid board dimensions and not occupied
+        if (
+            0 <= x < len(board)
+            and 0 <= y < len(board[0])
+            and not is_occupied(board, x, y)
+        ):
+            board[x][y] = stone  # Place the stone on the board
+            return True  # Indicate successful placement
+
+    return False  # Indicate failed placement
+
+
+def print_board(board):
+    for i in range(len(board)):
+        print("  " + chr(i + ord("A")), end=" ")
+    print("\n +" + "---+" * len(board))
+    for i, row in enumerate(board):
+        print(" | " + " | ".join(row) + " |" + f"{i}")
+        print(" +" + "---+" * len(board))
+    for i in range(1, len(board) + 1):
+        print(" ", i, end=" ")
+    print("\n")
+
+
+def check_available_moves(board):
+    size = len(board)  # Get the size of the board (assuming it's a square board)
+    available_moves = []  # Initialize an empty list to store available moves
+
+    # Loop through each row and column of the board
+    for row in range(size):
+        for col in range(size):
+            # Check if the current cell is not occupied
+            if not is_occupied(board, row, col):
+                # Convert the row and column indices to a user-friendly position format
+                position = (str(row), chr(col + ord("A")))
+                available_moves.append(position)  # Add the position to the list
+
+    return available_moves  # Return the list of available moves
+
+
+def check_for_winner(board):
+    size = len(board)
+
+    def check_line(line):
+        for i in range(size - 4):
+            if line[i : i + 5] == "XXXXX":
+                return "X"  # Player X wins
+            elif line[i : i + 5] == "OOOOO":
+                return "O"  # Player O wins
+        return None  # No winner found in this line
+
+    # Check rows
+    for row in board:
+        result = check_line("".join(row))
+        if result:
+            return result  # Return the winning player or None
+
+    # Check columns
+    for col in range(size):
+        result = check_line("".join(board[row][col] for row in range(size)))
+        if result:
+            return result  # Return the winning player or None
+
+    # Check diagonals
+    for row in range(size - 4):
+        for col in range(size - 4):
+            diagonal = [board[row + i][col + i] for i in range(5)]
+            result = check_line("".join(diagonal))
+            if result:
+                return result  # Return the winning player or None
+
+    for row in range(4, size):
+        for col in range(size - 4):
+            diagonal = [board[row - i][col + i] for i in range(5)]
+            result = check_line("".join(diagonal))
+            if result:
+                return result  # Return the winning player or None
+
+    # Check for draw or ongoing game
+    available_moves = check_available_moves(board)
+    if len(available_moves) == 0:
+        return "Draw"  # The game is a draw
+    return None  # No winner or draw, game still ongoing
+def choose():
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        while choice not in ["1", "2", "3", "4", "5"]:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+            choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("\n=================== Starting the game ====================")
+
+        elif choice == "2":
+            print("\n=================== Printing the board ====================")
+            size = int(input("Enter Gomoku Board Game Size 9, 13, 15: "))
+            board = create_board(size)
+            print_board(board)
+
+        elif choice == "3":
+            print("\n=================== Placing a Stone ====================")
+
+        elif choice == "4":
+            print("\n===================  Resetting the Game ====================")
+
+        elif choice == "5":
+            print("\n===================  Exiting the game ====================")
+            break
+
+
+choose()   
+
+"""
+
+
+# 8th function for random computer player ==================
+'''def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for _ in range(size)] for _ in range(size)]
+
+
+def is_occupied(board, x, y):
+    if board[x][y] != "-":
+        return True
+    return False
+
+
+def place_on_board(board, stone, position):
+    x, y = position
+
+    # Check if x is an integer and y is a string containing an alphabetical character
+    if isinstance(x, int) and isinstance(y, str) and y.isalpha():
+        x = int(x)  # Convert x to an integer
+        y = ord(y.upper()) - ord("A")  # Convert y to the corresponding column index
+
+        # Check if the position is within the valid board dimensions and not occupied
+        if (
+            0 <= x < len(board)
+            and 0 <= y < len(board[0])
+            and not is_occupied(board, x, y)
+        ):
+            board[x][y] = stone  # Place the stone on the board
+            return True  # Indicate successful placement
+
+    return False  # Indicate failed placement
+
+
+def print_board(board):
+    for i in range(len(board)):
+        print("  " + chr(i + ord("A")), end=" ")
+    print("\n +" + "---+" * len(board))
+    for i, row in enumerate(board):
+        print(" | " + " | ".join(row) + " |" + f"{i}")
+        print(" +" + "---+" * len(board))
+    for i in range(1, len(board) + 1):
+        print(" ", i, end=" ")
+    print("\n")
+
+
+def check_available_moves(board):
+    size = len(board)  # Get the size of the board (assuming it's a square board)
+    available_moves = []  # Initialize an empty list to store available moves
+
+    # Loop through each row and column of the board
+    for row in range(size):
+        for col in range(size):
+            # Check if the current cell is not occupied
+            if not is_occupied(board, row, col):
+                # Convert the row and column indices to a user-friendly position format
+                position = (str(row), chr(col + ord("A")))
+                available_moves.append(position)  # Add the position to the list
+
+    return available_moves  # Return the list of available moves
+
+
+def check_for_winner(board):
+    size = len(board)
+
+    def check_line(line):
+        for i in range(size - 4):
+            if line[i : i + 5] == "XXXXX":
+                return "X"  # Player X wins
+            elif line[i : i + 5] == "OOOOO":
+                return "O"  # Player O wins
+        return None  # No winner found in this line
+
+    # Check rows
+    for row in board:
+        result = check_line("".join(row))
+        if result:
+            return result  # Return the winning player or None
+
+    # Check columns
+    for col in range(size):
+        result = check_line("".join(board[row][col] for row in range(size)))
+        if result:
+            return result  # Return the winning player or None
+
+    # Check diagonals
+    for row in range(size - 4):
+        for col in range(size - 4):
+            diagonal = [board[row + i][col + i] for i in range(5)]
+            result = check_line("".join(diagonal))
+            if result:
+                return result  # Return the winning player or None
+
+    for row in range(4, size):
+        for col in range(size - 4):
+            diagonal = [board[row - i][col + i] for i in range(5)]
+            result = check_line("".join(diagonal))
+            if result:
+                return result  # Return the winning player or None
+
+    # Check for draw or ongoing game
+    available_moves = check_available_moves(board)
+    if len(available_moves) == 0:
+        return "Draw"  # The game is a draw
+    return None  # No winner or draw, game still ongoing
+
+def random_computer_player(board, player_move):
+    player_x, player_y = int(player_move[0]), ord(player_move[1]) - ord("A")
+    neighborhood_size = 3
+    valid_positions = []
+
+    for dx in range(-neighborhood_size // 2, neighborhood_size // 2 + 1):
+        for dy in range(-neighborhood_size // 2, neighborhood_size // 2 + 1):
+            new_x = player_x + dx
+            new_y = player_y + dy
+
+            if (
+                0 <= new_x < board.size
+                and 0 <= new_y < board.size
+                and not board.is_occupied(new_x, new_y)
+            ):
+                valid_positions.append((new_x, new_y))
+
+    if not valid_positions:
+        available_moves = board.check_available_moves()
+        return random.choice(available_moves)
+
+    chosen_position = random.choice(valid_positions)
+    next_x, next_y = chosen_position[0], chr(chosen_position[1] + ord("A"))
+    return str(next_x), next_y
+
+    stone = "X" if board.turn == "X" else "O"
+    player_move = input("Enter position (row column, e.g., 2 F): ").split()
+
+    if len(player_move) != 2:
+        print("Invalid input. Please enter row and column.")
+    else:
+        computer_move = random_computer_player(board, player_move)
+        print(f"Computer places {stone} at position {computer_move[0]} {computer_move[1]}")
+
+        if not board.is_occupied(
+            int(computer_move[0]), ord(computer_move[1].upper()) - ord("A")
+        ):
+            board.place_on_board(stone, computer_move)
+            board.print_board()
+            winner = board.check_for_winner()
+
+            if winner:
+                print(f"Player {winner} wins!")
+                board.board = None
+                board.mode = None
+            else:
+                board.turn = "O" if board.turn == "X" else "X"
+        else:
+            print("Position is occupied. Try again.")
+def choose():
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        while choice not in ["1", "2", "3", "4", "5"]:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+            choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("\n=================== Starting the game ====================")
+
+        elif choice == "2":
+            print("\n=================== Printing the board ====================")
+            size = int(input("Enter Gomoku Board Game Size 9, 13, 15: "))
+            board = create_board(size)
+            print_board(board)
+
+        elif choice == "3":
+            print("\n=================== Placing a Stone ====================")
+
+        elif choice == "4":
+            print("\n===================  Resetting the Game ====================")
+
+        elif choice == "5":
+            print("\n===================  Exiting the game ====================")
+            break
+
+
+choose()
+
+'''
+
+# 9th function for play game ==================
+def game_menu():
+    print("Welcome to the game of Gomoku!")
+    print("Please select an option from the menu: ")
+    print("1. Start a Game")
+    print("2. Print the Board")
+    print("3. Place a Stone")
+    print("4. Reset the Game")
+    print("5. Exit")
+
+
+def create_board(size):
+    return [["-" for _ in range(size)] for _ in range(size)]
+
+
+def is_occupied(board, x, y):
+    if board[x][y] != "-":
+        return True
+    return False
+
+
+def place_on_board(board, stone, position):
+    x, y = position
+
+    # Check if x is an integer and y is a string containing an alphabetical character
+    if isinstance(x, int) and isinstance(y, str) and y.isalpha():
+        x = int(x)  # Convert x to an integer
+        y = ord(y.upper()) - ord("A")  # Convert y to the corresponding column index
+
+        # Check if the position is within the valid board dimensions and not occupied
+        if (
+            0 <= x < len(board)
+            and 0 <= y < len(board[0])
+            and not is_occupied(board, x, y)
+        ):
+            board[x][y] = stone  # Place the stone on the board
+            return True  # Indicate successful placement
+
+    return False  # Indicate failed placement
+
+
+def print_board(board):
+    for i in range(len(board)):
+        print("  " + chr(i + ord("A")), end=" ")
+    print("\n +" + "---+" * len(board))
+    for i, row in enumerate(board):
+        print(" | " + " | ".join(row) + " |" + f"{i}")
+        print(" +" + "---+" * len(board))
+    for i in range(1, len(board) + 1):
+        print(" ", i, end=" ")
+    print("\n")
+
+
+def check_available_moves(board):
+    size = len(board)  # Get the size of the board (assuming it's a square board)
+    available_moves = []  # Initialize an empty list to store available moves
+
+    # Loop through each row and column of the board
+    for row in range(size):
+        for col in range(size):
+            # Check if the current cell is not occupied
+            if not is_occupied(board, row, col):
+                # Convert the row and column indices to a user-friendly position format
+                position = (str(row), chr(col + ord("A")))
+                available_moves.append(position)  # Add the position to the list
+
+    return available_moves  # Return the list of available moves
+
+
+def check_for_winner(board):
+    size = len(board)
+
+    def check_line(line):
+        for i in range(size - 4):
+            if line[i : i + 5] == "XXXXX":
+                return "X"  # Player X wins
+            elif line[i : i + 5] == "OOOOO":
+                return "O"  # Player O wins
+        return None  # No winner found in this line
+
+    # Check rows
+    for row in board:
+        result = check_line("".join(row))
+        if result:
+            return result  # Return the winning player or None
+
+    # Check columns
+    for col in range(size):
+        result = check_line("".join(board[row][col] for row in range(size)))
+        if result:
+            return result  # Return the winning player or None
+
+    # Check diagonals
+    for row in range(size - 4):
+        for col in range(size - 4):
+            diagonal = [board[row + i][col + i] for i in range(5)]
+            result = check_line("".join(diagonal))
+            if result:
+                return result  # Return the winning player or None
+
+    for row in range(4, size):
+        for col in range(size - 4):
+            diagonal = [board[row - i][col + i] for i in range(5)]
+            result = check_line("".join(diagonal))
+            if result:
+                return result  # Return the winning player or None
+
+    # Check for draw or ongoing game
+    available_moves = check_available_moves(board)
+    if len(available_moves) == 0:
+        return "Draw"  # The game is a draw
+    return None  # No winner or draw, game still ongoing
+
+def random_computer_player(board, player_move):
+    player_x, player_y = int(player_move[0]), ord(player_move[1]) - ord("A")
+    neighborhood_size = 3
+    valid_positions = []
+
+    for dx in range(-neighborhood_size // 2, neighborhood_size // 2 + 1):
+        for dy in range(-neighborhood_size // 2, neighborhood_size // 2 + 1):
+            new_x = player_x + dx
+            new_y = player_y + dy
+
+            if (
+                0 <= new_x < board.size
+                and 0 <= new_y < board.size
+                and not board.is_occupied(new_x, new_y)
+            ):
+                valid_positions.append((new_x, new_y))
+
+    if not valid_positions:
+        available_moves = board.check_available_moves()
+        return random.choice(available_moves)
+
+    chosen_position = random.choice(valid_positions)
+    next_x, next_y = chosen_position[0], chr(chosen_position[1] + ord("A"))
+    return str(next_x), next_y
+
+    stone = "X" if board.turn == "X" else "O"
+    player_move = input("Enter position (row column, e.g., 2 F): ").split()
+
+    if len(player_move) != 2:
+        print("Invalid input. Please enter row and column.")
+    else:
+        computer_move = random_computer_player(board, player_move)
+        print(f"Computer places {stone} at position {computer_move[0]} {computer_move[1]}")
+
+        if not board.is_occupied(
+            int(computer_move[0]), ord(computer_move[1].upper()) - ord("A")
+        ):
+            board.place_on_board(stone, computer_move)
+            board.print_board()
+            winner = board.check_for_winner()
+
+            if winner:
+                print(f"Player {winner} wins!")
+                board.board = None
+                board.mode = None
+            else:
+                board.turn = "O" if board.turn == "X" else "X"
+        else:
+            print("Position is occupied. Try again.")
+
+#==========================================
+
+def play_game():
+    board = None
+    mode = None
+    turn = "X"
+
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            size = int(input("Enter board size (9, 13, 15): "))
+            if size not in [9, 13, 15]:
+                print("Invalid size. Please choose 9, 13, or 15.")
+                continue
+
+            mode = input("Enter mode (man or com): ")
+            if mode.lower() not in ["man", "com"]:
+                print("Invalid mode. Please choose Player vs. Player or Player vs. Computer.")
+                continue
+
+            board = create_board(size)
+            turn = "X"
+            print("\n-------------Game started--------------")
+
+        elif choice == "2":
+            if board is None:
+                print("Please start a game first.")
+            else:
+                print_board(board)
+
+        elif choice == "3":
+            if board is None or mode is None:
+                print("Please start a game first.")
+                continue
+
+            print_board(board)
+
+            if mode.lower() == "man":
+                stone = "X" if turn == "X" else "O"
+                position_input = input("Enter position (row column, e.g., 2 F): ").strip()
+                position = position_input.split()
+                if len(position) != 2:
+                    print("Invalid input. Please enter row and column.")
+                    continue
+
+                x, y = position[0], position[1]
+                if not x.isdigit() or not y.isalpha() or ord(y.upper()) - ord("A") >= size:
+                    print("Invalid position. Please enter a valid position.")
+                    continue
+
+                x = int(x)
+                y = ord(y.upper()) - ord("A")
+
+                if not is_occupied(board, x, y):
+                    place_on_board(board, stone, (x, y))
+                    print_board(board)
+                    winner = check_for_winner(board)
+                    if winner:
+                        print(f"Player {winner} wins!")
+                        board = None
+                        mode = None
+                    else:
+                        turn = "O" if turn == "X" else "X"
+                else:
+                    print("Position is occupied. Try again.")
+
+            elif mode.lower() == "com":
+                stone = "X" if turn == "X" else "O"
+                player_move = input("Enter position (row column, e.g., 2 F): ").split()
+                if len(player_move) != 2:
+                    print("Invalid input. Please enter row and column.")
+                    continue
+                computer_move = random_computer_player(board, player_move)
+                print(f"Computer places {stone} at position {computer_move[0]} {computer_move[1]}")
+
+                if not is_occupied(board, int(computer_move[0]), ord(computer_move[1].upper()) - ord("A")):
+                    place_on_board(board, stone, computer_move)
+                    print_board(board)
+                    winner = check_for_winner(board)
+                    if winner:
+                        print(f"Player {winner} wins!")
+                        board = None
+                        mode = None
+                    else:
+                        turn = "O" if turn == "X" else "X"
+                else:
+                    print("Position is occupied. Try again.")
+
+        elif choice == "4":
+            board = None
+            mode = None
+            print("Game reset.")
+
+        elif choice == "5":
+            print("Exiting the program.")
+            break
+
+        else:
+            print("Invalid choice. Please choose a valid option.")
+
+play_game()
+
+def choose():
+    while True:
+        game_menu()
+        choice = input("Enter your choice: ")
+
+        while choice not in ["1", "2", "3", "4", "5"]:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+            choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("\n=================== Starting the game ====================")
+
+        elif choice == "2":
+            print("\n=================== Printing the board ====================")
+            size = int(input("Enter Gomoku Board Game Size 9, 13, 15: "))
+            board = create_board(size)
+            print_board(board)
+
+        elif choice == "3":
+            print("\n=================== Placing a Stone ====================")
+
+        elif choice == "4":
+            print("\n===================  Resetting the Game ====================")
+
+        elif choice == "5":
+            print("\n===================  Exiting the game ====================")
+            break
+
+
+choose()
